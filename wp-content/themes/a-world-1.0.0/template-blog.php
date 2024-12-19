@@ -22,7 +22,6 @@ get_header();
                      <div class="blog_post">
                         <div class="blog_img">
                            <a href="<?php the_permalink(); ?>">
-                              <!-- Adding fallback for post thumbnail -->
                               <img src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/images/default-thumbnail.jpg'; ?>" alt="<?php the_title(); ?>">
                            </a>
                         </div>
@@ -53,37 +52,5 @@ get_header();
       </div>
    </div>
    <!-- Blog Page Section End -->
-
-   <!-- Latest Posts Section Start -->
-   <div class="recent_posts_section">
-      <h2>Recent Posts</h2>
-      <div class="row">
-         <?php
-         $recent_posts_query = new WP_Query([
-            'post_type' => 'post',
-            'posts_per_page' => 3,
-            'post__not_in' => wp_list_pluck($blog_query->posts, 'ID'), // Exclude posts already displayed in the main loop
-         ]);
-
-         if ($recent_posts_query->have_posts()) :
-            while ($recent_posts_query->have_posts()) : $recent_posts_query->the_post(); ?>
-               <div class="col-md-4">
-                  <div class="recent_post">
-                     <div class="recent_post_img">
-                        <a href="<?php the_permalink(); ?>">
-                           <!-- Adding fallback for post thumbnail -->
-                           <img src="<?php echo has_post_thumbnail() ? get_the_post_thumbnail_url() : get_template_directory_uri() . '/images/default-thumbnail.jpg'; ?>" alt="<?php the_title(); ?>">
-                        </a>
-                     </div>
-                     <h3 class="recent_post_title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
-                  </div>
-               </div>
-         <?php endwhile; ?>
-         <?php else : ?>
-            <p>No recent posts available.</p>
-         <?php endif; wp_reset_postdata(); ?>
-      </div>
-   </div>
-   <!-- Latest Posts Section End -->
 
 <?php get_footer(); ?>
