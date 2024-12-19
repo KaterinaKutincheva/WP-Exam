@@ -36,57 +36,55 @@
 </head>
 
 <body>
-   <!-- header section start -->
-   <div class="header_section">
-      <div class="header_main">
-         <div class="mobile_menu">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-               <div class="logo_mobile"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png"></a></div>
-               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                  aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                  <span class="navbar-toggler-icon"></span>
-               </button>
-               <div class="collapse navbar-collapse" id="navbarNav">
-                  <ul class="navbar-nav">
-                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo home_url(); ?>">Home</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo home_url(); ?>/about">About</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo home_url(); ?>/services">Services</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo home_url(); ?>/blog">Blog</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo home_url(); ?>/contact">Contact</a>
-                     </li>
-                  </ul>
-               </div>
-            </nav>
-         </div>
-         <div class="container-fluid">
-            <div class="logo"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png"></a></div>
-            <div class="menu_main">
-               <ul>
-                  <li class="active"><a href="<?php echo home_url(); ?>">Home</a></li>
-                  <li><a href="<?php echo home_url(); ?>/about">About</a></li>
-                  <li><a href="<?php echo home_url(); ?>/services">Services</a></li>
-                  <li><a href="<?php echo home_url(); ?>/blog">Blog</a></li>
-                  <li><a href="<?php echo home_url(); ?>/contact">Contact us</a></li>
-               </ul>
+<!-- header section start -->
+<div class="header_section">
+   <div class="header_main">
+      <!-- Mobile Menu -->
+      <div class="mobile_menu">
+         <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="logo_mobile"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png"></a></div>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+               aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+               <?php 
+               wp_nav_menu( array(
+                  'theme_location' => 'primary', // Primary menu location
+                  'container' => false, 
+                  'menu_class' => 'navbar-nav', 
+                  'depth' => 2,
+                  'fallback_cb' => 'wp_page_menu', // Default menu if no menu is set
+               ));
+               ?>
             </div>
+         </nav>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="container-fluid">
+         <div class="logo"><a href="<?php echo home_url(); ?>"><img src="<?php echo get_stylesheet_directory_uri(); ?>/images/logo.png"></a></div>
+         <div class="menu_main">
+            <ul>
+               <li class="<?php echo ( is_front_page() ) ? 'active' : ''; ?>"><a href="<?php echo home_url(); ?>">Home</a></li>
+               <li class="<?php echo ( is_page( 'about' ) ) ? 'active' : ''; ?>"><a href="<?php echo get_permalink( get_page_by_path( 'about' ) ); ?>">About</a></li>
+               <li class="<?php echo ( is_page( 'services' ) ) ? 'active' : ''; ?>"><a href="<?php echo get_permalink( get_page_by_path( 'services' ) ); ?>">Services</a></li>
+               <li class="<?php echo ( is_page( 'blog' ) ) ? 'active' : ''; ?>"><a href="<?php echo get_permalink( get_page_by_path( 'blog' ) ); ?>">Blog</a></li>
+               <li class="<?php echo ( is_page( 'contact' ) ) ? 'active' : ''; ?>"><a href="<?php echo get_permalink( get_page_by_path( 'contact' ) ); ?>">Contact</a></li>
+            </ul>
          </div>
       </div>
+   </div>
+</div>
+<!-- header section end -->
+
       <!-- banner section start -->
       <div class="banner_section layout_padding">
          <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                <div class="carousel-item active">
                   <div class="container">
-                     <h1 class="banner_taital">Adventure</h1>
+                     <h1 class="banner_title">Adventure</h1>
                      <p class="banner_text">There are many variations of passages of Lorem Ipsum available, but the
                         majority have sufferedThere are ma available, but the majority have suffered</p>
                      <div class="read_bt"><a href="#">Get A Quote</a></div>
@@ -94,7 +92,7 @@
                </div>
                <div class="carousel-item">
                   <div class="container">
-                     <h1 class="banner_taital">Adventure</h1>
+                     <h1 class="banner_title">Adventure</h1>
                      <p class="banner_text">There are many variations of passages of Lorem Ipsum available, but the
                         majority have sufferedThere are ma available, but the majority have suffered</p>
                      <div class="read_bt"><a href="#">Get A Quote</a></div>
@@ -102,7 +100,7 @@
                </div>
                <div class="carousel-item">
                   <div class="container">
-                     <h1 class="banner_taital">Adventure</h1>
+                     <h1 class="banner_title">Adventure</h1>
                      <p class="banner_text">There are many variations of passages of Lorem Ipsum available, but the
                         majority have sufferedThere are ma available, but the majority have suffered</p>
                      <div class="read_bt"><a href="#">Get A Quote</a></div>
@@ -118,7 +116,7 @@
    <!-- services section start -->
    <div class="services_section layout_padding">
       <div class="container">
-         <h1 class="services_taital">Services </h1>
+         <h1 class="services_title">Services </h1>
          <p class="services_text">There are many variations of passages of Lorem Ipsum available, but the majority have
             suffered alteration</p>
          <div class="services_section_2">
