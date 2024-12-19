@@ -1,0 +1,47 @@
+/* Fishing Logbook Plugin Styles */
+
+.fishing-logs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    margin: 0;
+}
+
+.fishing-log-entry {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+.fishing-log-entry:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+.fishing-log-entry h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: bold;
+}
+
+.fishing-log-description {
+    font-size: 1rem;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.fishing-log-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.fishing-log-image img {
+    width: 100%;
+    border-radius: 8px;
+}
